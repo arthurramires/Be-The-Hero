@@ -27,11 +27,11 @@ export default function Incident(){
 
         setLoading(true);
 
-        const response = await api.get('incidents', {
+        const response = await api.get('/incidents', {
             params: { page }
         });
 
-        setIncidents(...incidents, ...response.data);
+        setIncidents([...incidents, ...response.data]);
         setTotal(response.headers['x-total-count']);
         setPage(page + 1);
         setLoading(false);
